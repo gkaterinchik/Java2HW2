@@ -9,13 +9,13 @@ public  class Test {
 public static void main(String[] args ){
     HashMap<String, Integer> UniqWords = new HashMap<>();
     for (int i = 0; i <words.length ; i++) {
-        if (!UniqWords.containsKey((Object)words[i]))
+        if (!UniqWords.containsKey(words[i]))
             {
               UniqWords.put(words[i],1);
             }
         else
             {
-              UniqWords.put(words[i],UniqWords.get((Object)words[i])+1);
+              UniqWords.put(words[i],UniqWords.get(words[i])+1);
             }
     }
 

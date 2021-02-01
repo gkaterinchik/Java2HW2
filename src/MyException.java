@@ -68,9 +68,9 @@ public class MyException {
             } catch (MyArrayDataException ex) {
                 System.out.println("Невозможно преобразовать символ в число arr[" + lasti + "]" + "[" + lastj + "]");
                 ex.printStackTrace();
-                arrtest=strArr;
-                arrtest[lasti][lastj]="0";
-                testMethod(arrtest);
+                //arrtest=strArr;
+                strArr[lasti][lastj]="0";
+                testMethod(strArr);
 
             }
 
