@@ -3,6 +3,7 @@ import java.util.Random;
 public class MyException {
     public static String[][] arr = new String[4][4];
     public static String[][] arr2 = new String[4][4];
+    public static String[][] arrtest;
     public static Random a = new Random();
 
     public static void main(String[] args) throws MySizeArrayException, MyArrayDataException {
@@ -11,7 +12,7 @@ public class MyException {
             System.out.println("");
             for (int j = 0; j < arr[i].length; j++) {
                 arr[i][j] = a.nextInt(10) + "";
-                System.out.println(arr[i][j]);
+                //System.out.println(arr[i][j]);
             }
         }
         for (int i = 0; i < arr2.length; i++) {
@@ -22,9 +23,10 @@ public class MyException {
             }
         }
         //testMethod(arr);
-        testMethod(new String[6][6]);
+       // testMethod(new String[6][6]);
         arr2[2][3] = "e";
-        //testMethod(arr2);
+        arr2[3][3] = "e";
+       testMethod(arr2);
     }
 
     public static void testMethod(String[][] strArr) throws MySizeArrayException, MyArrayDataException {
@@ -60,12 +62,16 @@ public class MyException {
             }
             System.out.println("sum= " + sum);
 
-        } catch (NumberFormatException e) {
+        }catch (NumberFormatException e) {
             try {
                 throw new MyArrayDataException();
             } catch (MyArrayDataException ex) {
                 System.out.println("Невозможно преобразовать символ в число arr[" + lasti + "]" + "[" + lastj + "]");
                 ex.printStackTrace();
+                arrtest=strArr;
+                arrtest[lasti][lastj]="0";
+                testMethod(arrtest);
+
             }
 
 
@@ -78,7 +84,7 @@ public class MyException {
 
     }
 
-    public static class MyArrayDataException extends Exception {
+    public static class MyArrayDataException extends NumberFormatException {
 
     }
 
