@@ -30,14 +30,14 @@ public class Multithreading {
         @Override
         public void run() {
             long a = System.currentTimeMillis();
-            for (int i = 0; i < h; i++){
+            for (int i = 0; i < h; i++) {
                 values[i] = 1;
             }
             for (int i = 0; i < h; i++) {
                 values[i] = (float) (values[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
 
             }
-            System.out.println("Время потока  " +Thread.currentThread().getName()+" "+ (System.currentTimeMillis() - a));
+            System.out.println("Время потока  " + Thread.currentThread().getName() + " " + (System.currentTimeMillis() - a));
         }
     }
 
@@ -52,15 +52,15 @@ public class Multithreading {
         arrayThread thread2 = new arrayThread(arr2);
 
         thread1.start();
-        try{
+        try {
             thread1.join();
+        } catch (InterruptedException e) {
         }
-        catch(InterruptedException e){}
         thread2.start();
-        try{
+        try {
             thread2.join();
+        } catch (InterruptedException e) {
         }
-        catch(InterruptedException e){}
 
         System.arraycopy(thread1.values, 0, arr, 0, h);
         System.arraycopy(thread2.values, 0, arr, h, h);
